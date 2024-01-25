@@ -2,7 +2,7 @@
 CPSC 210 term project: r8a9v, 25860198
 
 ## Description
-The application will function as a store management game with a small story elements 
+The application will function as a store management game with small story elements 
 attatched. As a player, your objective is to
 buy stock, upgrade your store, and
 make rent every 5 days. Stock goes on clearance (loses value) after 2 days
