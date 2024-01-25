@@ -10,7 +10,7 @@ so buy responsibly!
 - This project is of interest to me since I ultimately want to be a 
 game developer, and story driven content is extremely fascinating to me
 
-*User stories*:
+# *User stories*:
 - As a user, I want to be able to add stock items to my inventory.
 - As a user, I want to view my inventory and the items I have in stock.
 - As a user, I want to unlock better stock items with the money I make.
