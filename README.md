@@ -12,7 +12,7 @@ game developer, and story driven content is extremely fascinating to me
 
 # *User stories*:
 - As a user, I want to be able to add stock items to my inventory.
-- As a user, I want to view my inventory and the items I have in stock.
+- As a user, I want to view my inventory and the items I have in stock as well as their value.
 - As a user, I want to unlock better stock items with the money I make.
 - As a user, I want to observe and interact with customers. 
 - As a user, I want to gain experience points that allow me to "level up"
