@@ -1,4 +1,4 @@
-# Corner Store on 45th
+# Corner Store
 CPSC 210 term project: r8a9v, 25860198
 
 ## Description
@@ -8,7 +8,7 @@ buy stock, upgrade your store, and
 make rent every 5 days. Stock goes on clearance (loses value) after 2 days
 so buy responsibly!
 - This project is of interest to me since I ultimately want to be a 
-game developer, and story driven content is extremely fascinating to me
+game developer, and story driven content is extremely fascinating to me.
 
 # *User stories*:
 - As a user, I want to be able to add stock items to my inventory.
