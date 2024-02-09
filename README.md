@@ -15,10 +15,7 @@ game developer, and story driven content is extremely fascinating to me.
 - As a user, I want to view my inventory and the items I have in stock as well as their value 
 and whether they are or clearance or not.
 - As a user, I want to unlock better stock items with the money I make.
-- As a user, I want to observe and interact with customers. 
-- As a user, I want to gain experience points that allow me to "level up"
-and grant access to better items.
-- As a user, I want to see how much rent I have to pay
-and when it is due.
+- As a user, I want to level up and gain access to better items.
+
 
   
