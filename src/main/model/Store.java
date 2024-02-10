@@ -75,7 +75,6 @@ public class Store {
     //                        take the cost of the unlock from the player, move product to available options.
     //                  else return relevant error string.
     //         If it is not in availableUnlocks return error message stating this.
-
     public String unlockProduct(String choice) {
         //look for unlock
         Product toUnlock = null;

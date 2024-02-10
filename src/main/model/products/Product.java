@@ -4,7 +4,7 @@ package model.products;
 import static java.lang.Math.floor;
 
 /*
-A product that can be bought in a store, these are added to the inventory.
+A product that can be bought in a store, these are added to the players inventory when bought.
 
 fields:
 - name --> name of item

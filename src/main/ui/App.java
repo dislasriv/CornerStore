@@ -1,10 +1,16 @@
 package ui;
 
 /*
-Indefinitely runs the runDay function. This game iterates infinitely over
+This class indefinitely runs the runDay function, and specifies most of the UI. This game iterates infinitely over
 steps called days, at the start of a day you can view your inventory and buy things.
 When you 'start' the day, all of the products in your inventory have a chance to sell.
 The cycle will then repeat.
+
+fields:
+plr --> the running player
+store --> the game's running store
+day --> the current day in the game
+input --> a scanner to get user input.
  */
 
 import model.Player;
@@ -17,12 +23,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+    private static final int RENT = 50;
 
     private Player plr;
     private Store store;
     private int day;
     private Scanner input;
-    private static final int RENT = 50;
+
 
     public App() {
         plr = new Player();
@@ -149,7 +156,8 @@ public class App {
         }
     }
 
-    //EFFECTS: If player does not afford rent game ends with a message
+    //EFFECTS: If player does not afford rent game ends with a message, else a message is sent stating that the player
+    //         has been charged.
     public void chargeRent() {
         if (plr.getMoney() < RENT) {
             System.out.println("Its been five days, you have $" + plr.getMoney() + ", rent is $" + RENT

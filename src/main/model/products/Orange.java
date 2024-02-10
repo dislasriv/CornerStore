@@ -12,6 +12,7 @@ public class Orange extends Product {
     public static final int EXP_VALUE = 2;
     public static final int UNLOCK_COST = 0;
 
+    //EFFECTS: Creates a new orange product.
     public Orange() {
         super(NAME, COST, EXPIRY, SALE_PRICE, LVL_REQ, EXP_VALUE, UNLOCK_COST);
     }

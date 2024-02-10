@@ -1,5 +1,6 @@
 package model;
 
+import model.products.Product;
 /*
 A class holding all the statistics for a player and their inventory.
 
@@ -9,8 +10,6 @@ fields:
 - Inventory --> a reference to the players list of items.
 - exp --> experience points of the player.
  */
-
-import model.products.Product;
 
 public class Player {
     public static final int INITIAL_MONEY = 30;

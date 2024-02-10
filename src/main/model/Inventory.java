@@ -4,6 +4,12 @@ import model.products.Product;
 
 import java.util.ArrayList;
 
+/*
+A list of items interpreted as an inventory, this holds everything the player currently owns.
+
+fields:
+- prodList --> the list of items held in the inventory.
+ */
 public class Inventory {
 
     private ArrayList<Product> prodList;

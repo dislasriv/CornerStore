@@ -7,6 +7,16 @@ import ui.App;
 
 import java.util.Scanner;
 
+/*
+A class made to separate store related UI from App. This class holds all of the specification
+for the behaviour of the store screen.
+
+fields:
+app --> the app that instantiated this class, used to grab methods.
+input --> a scanner to get user input.
+store --> the game's running store.
+plr --> the running player
+ */
 public class RunStore {
 
     //references to things generated in app
@@ -15,6 +25,8 @@ public class RunStore {
     private Store store;
     private Player plr;
 
+
+    //EFFECTS: Creates a new instance of this class
     public RunStore(App app, Scanner input, Store store, Player plr) {
         this.app = app;
         this.input = input;
@@ -64,16 +76,20 @@ public class RunStore {
     }
 
     //helper methods for options and unlocks cases above
+
+    //EFFECTS: Prompts the player to buy an item.
     public void tryBuy() {
         System.out.println("What product do you want to buy (type name)?");
         System.out.println(store.buyProduct(input.nextLine()));
     }
 
+    //EFFECTS: Prompts the player to unlock an item.
     public void tryUnlock() {
         System.out.println("What unlockable do you want to buy (type name)?");
         System.out.println(store.unlockProduct(input.nextLine()));
     }
 
+    //EFFECTS: Prints the possible unlocks the player can buy
     public void printUnlocks() {
         System.out.println("\nPossible Unlocks:");
         int i = 1;
