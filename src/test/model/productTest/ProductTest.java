@@ -4,7 +4,10 @@ import model.products.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static java.lang.Math.ceil;
+import static java.lang.Math.floor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /*
  tests for the Product class.
@@ -50,7 +53,7 @@ public class ProductTest {
         //see how truncation works
         p2.increaseTimeInStore();
         p2.putOnClearance();
-        assertEquals(10, p2.getSalePrice());
+        assertEquals(floor(21-21*.25), p2.getSalePrice());
     }
 
     @Test
@@ -62,9 +65,9 @@ public class ProductTest {
         p1.increaseTimeInStore();
         p1.increaseTimeInStore();
         p1.putOnClearance();
-        assertEquals(60, p1.getSalePrice());
+        assertEquals(floor(120 - 120*.25), p1.getSalePrice());
         p1.putOnClearance();
-        assertEquals(60, p1.getSalePrice());
+        assertEquals(floor(120 - 120*.25), p1.getSalePrice());
     }
 
     //increaseTimeInStore
@@ -92,16 +95,19 @@ public class ProductTest {
     @Test
     void testIncreaseToStringOnce() {
         //call
-        assertEquals("A Sock it costs $3 to buy and sells for $4.", testp.toString());
+        assertEquals("A Sock it costs $3 to buy and sells for $4, it goes on clearance 2 days after you buy it."
+               + " It gives you 1 exp when you sell it.", testp.toString());
     }
 
     @Test
     void testIncreaseToStringMulti() {
         //call
         assertEquals("A Sock it costs $3 to buy and sells for $4," +
-                " it goes on clearance 2 days after you buy it.", testp.toString());
+                " it goes on clearance 2 days after you buy it."
+               + " It gives you 1 exp when you sell it." , testp.toString());
         assertEquals("A Gun it costs $100 to buy and sells for $120, it goes on " +
-                "clearance 2 days after you buy it.", p1.toString());
+                "clearance 2 days after you buy it."
+                + " It gives you 20 exp when you sell it.", p1.toString());
     }
 
 
@@ -128,5 +134,6 @@ public class ProductTest {
         assertEquals(0, testp.getLvlReq());
         assertEquals(1, testp.getExpValue());
         assertEquals(0, testp.getTimeInStore());
+        assertFalse(testp.onClearance());
     }
 }

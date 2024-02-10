@@ -13,7 +13,7 @@ fields:
 import model.products.Product;
 
 public class Player {
-    public static final int INITIAL_MONEY = 25;
+    public static final int INITIAL_MONEY = 30;
 
     private int level;
     private int money;
@@ -36,7 +36,6 @@ public class Player {
 
         //cast log base 3 to int
         level = (int) (Math.log(exp) / Math.log(3));
-
 
         return (clev != level);
     }

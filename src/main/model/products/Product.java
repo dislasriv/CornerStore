@@ -1,6 +1,8 @@
 package model.products;
 
 
+import static java.lang.Math.floor;
+
 /*
 A product that can be bought in a store, these are added to the inventory.
 
@@ -40,12 +42,14 @@ public class Product {
     }
 
     //MODIFIES: this
-    //EFFECTS: Halves value of item if timeInStore >= expiry.
-    public void putOnClearance() {
+    //EFFECTS: Reduces cost by 25%
+    public boolean putOnClearance() {
         if (timeInStore >= expiryDate && !clearance) {
-            salePrice /= 2;
+            salePrice = (int)(salePrice - salePrice * .25);
             clearance = true;
+            return true;
         }
+        return false;
     }
 
     //MODIFIES: this
@@ -57,7 +61,8 @@ public class Product {
     //EFFECTS: Halves value of item if age >= expiry.
     public String toString() {
         return "A " + name + " it costs $" + cost + " to buy and sells for $"
-                + salePrice + ", it goes on clearance " + expiryDate + " days after you buy it.";
+                + salePrice + ", it goes on clearance " + expiryDate + " days after you buy it."
+                 + " It gives you " + expValue + " exp when you sell it.";
     }
 
     //EFFECTS: Reconstructs the product, resetting the clone's dynamic stats.
@@ -93,6 +98,10 @@ public class Product {
 
     public int getUnlockCost() {
         return unlockCost;
+    }
+
+    public boolean onClearance() {
+        return clearance;
     }
 
 }

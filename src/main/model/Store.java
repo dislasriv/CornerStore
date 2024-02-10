@@ -41,7 +41,7 @@ public class Store {
     //EFFECTS: If the string has a corresponding product in availableOptions regardless of case...
     //              If plr.getMoney() >= Product.getCost();
     //                    method takes the cost of the product from the player, and adds a clone instance of the product
-    //                    to the inventory. product's experienceValue is added to the players exp var. returns success
+    //                    to the inventory. returns success
     //                    message.
     //              If not enough money return error string
     //         If it is not the method returns en error string.

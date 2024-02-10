@@ -57,7 +57,9 @@ public class StoreTest {
     @Test
     void testBuyProductAvailableCanAfford() {
         assertEquals(Store.SUCCESSFUL_BUY + "Orange.", testStore.buyProduct("ORange"));
-        assertEquals(testPlr.getInventory().getProducts().get(0).getName(), "Orange");
+        assertEquals("Orange", testPlr.getInventory().getProducts().get(0).getName());
+        assertEquals(testPlr.INITIAL_MONEY -testPlr.getInventory().getProducts().get(0).getCost(),
+                testPlr.getMoney());
     }
 
     //unlockProduct
