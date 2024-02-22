@@ -15,6 +15,8 @@ game developer.
 and whether they are or clearance or not.
 - As a user, I want to unlock better stock items with the money I make.
 - As a user, I want to level up and gain access to better items.
+- As a user I want to be able to save the state of my game if I want to
+- As a user I want to be able to load the last saved state of my game if I want to.
 
 
   
