@@ -45,6 +45,7 @@ public class App {
         System.out.println();
         //see how many items went on clearance
         clearanceCheck();
+        checkDrop();
         if (day % 5 == 0) {
             chargeRent();
         }
@@ -135,6 +136,12 @@ public class App {
             }
         }
         System.out.println(cleared + " items were put on clearance today!");
+    }
+
+    //EFFECTS: prints a message stating the amount of items that were thrown out.
+    public void checkDrop() {
+        int dropped = plr.getInventory().dropCheck();
+        System.out.println(dropped + " items were thrown away today!");
     }
 
 

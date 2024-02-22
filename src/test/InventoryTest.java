@@ -17,6 +17,7 @@ public class InventoryTest {
     private Inventory testInv;
     private Product p1;
     private Product p2;
+    private Product p3;
     private ArrayList<Product> testList;
 
     @BeforeEach
@@ -69,7 +70,10 @@ public class InventoryTest {
     }
 
     @Test
-    void testRemoveProductMulti() {
+    void testRemoveProductMultiTooSmall() {
+        testInv.removeProduct(3);
+        assertEquals(0, testInv.getSize());
+
         testInv.addProduct(p1);
         testInv.addProduct(p2);
 
@@ -86,6 +90,30 @@ public class InventoryTest {
         testList.remove(0);
         assertEquals(0, testInv.getSize());
         assertEquals(testList, testInv.getProducts());
+    }
+
+    //dropCheck
+    @Test
+    void testDropCheckEmpty() {
+       assertEquals(0, testInv.dropCheck());
+    }
+
+    @Test
+    void testDropCheckNoDrop() {
+        testInv.addProduct(p1);
+        testInv.addProduct(p2);
+        assertEquals(0, testInv.dropCheck());
+    }
+
+    @Test
+    void testDropCheckMixed() {
+        testInv.addProduct(p1);
+        testInv.addProduct(p2);
+
+        for(int i = 0; i < 20; i++){
+            p2.increaseTimeInStore();
+        }
+        assertEquals(1, testInv.dropCheck());
     }
 
     //getters

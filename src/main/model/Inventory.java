@@ -25,11 +25,25 @@ public class Inventory {
         prodList.add(item);
     }
 
-    //REQUIRES: index < getSize()
     //MODIFIES: this
     //EFFECTS: Removes item at index from product list.
     public void removeProduct(int index) {
-        prodList.remove(index);
+        if (index < getSize()) {
+            prodList.remove(index);
+        }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: Removes items older than 2 weeks.
+    public int dropCheck() {
+        int dropped = 0;
+        for (int i = 0; i < getSize(); i++) {
+            if (prodList.get(i).getTimeInStore() >= 14) {
+                removeProduct(i);
+                dropped++;
+            }
+        }
+        return dropped;
     }
 
     //getters
