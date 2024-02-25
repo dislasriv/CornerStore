@@ -150,9 +150,6 @@ public class Store implements Writable {
         availableOptions = op;
     }
 
-    public void setPlayer(Player p) {
-        plr = p;
-    }
 
 
 }
