@@ -1,10 +1,9 @@
-package model.productTest;
+package model.products;
 
-import model.products.Product;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static java.lang.Math.ceil;
 import static java.lang.Math.floor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -123,6 +122,40 @@ public class ProductTest {
         assertEquals(testp.getExpValue(), 1);
         assertEquals(testp.getTimeInStore(), 0);
         assertEquals(testp.getUnlockCost(), 100);
+    }
+
+    //toJson
+    @Test
+    void testToJson() {
+        Orange orange = new Orange();
+        JSONObject productData = orange.toJson();
+
+        //compare fields
+        assertEquals(productData.getString("name"), orange.getName());
+        assertEquals(productData.getInt("timeInStore"), orange.getTimeInStore());
+        assertEquals(productData.getInt("cost"), orange.getCost());
+        assertEquals(productData.getInt("expiryDate"), orange.getExpiryDate());
+        assertEquals(productData.getInt("salePrice"), orange.getSalePrice());
+        assertEquals(productData.getInt("lvlReq"), orange.getLvlReq());
+        assertEquals(productData.getInt("expValue"), orange.getExpValue());
+        assertEquals(productData.getInt("unlockCost"), orange.getUnlockCost());
+        assertEquals(productData.getBoolean("clearance"), orange.onClearance());
+    }
+    @Test
+    void testToJsonMulti() {
+        OrangeJuice juice = new OrangeJuice();
+        JSONObject productData = juice.toJson();
+        //compare fields
+        assertEquals(productData.getString("name"), juice.getName());
+        assertEquals(productData.getInt("timeInStore"), juice.getTimeInStore());
+        assertEquals(productData.getInt("cost"), juice.getCost());
+        assertEquals(productData.getInt("expiryDate"), juice.getExpiryDate());
+        assertEquals(productData.getInt("salePrice"), juice.getSalePrice());
+        assertEquals(productData.getInt("lvlReq"), juice.getLvlReq());
+        assertEquals(productData.getInt("expValue"), juice.getExpValue());
+        assertEquals(productData.getInt("unlockCost"), juice.getUnlockCost());
+        assertEquals(productData.getBoolean("clearance"), juice.onClearance());
+        testToJson();
     }
 
     //getters

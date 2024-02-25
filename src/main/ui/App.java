@@ -17,18 +17,25 @@ import model.Player;
 import model.Store;
 import model.products.Orange;
 import model.products.Product;
+import persistence.SaveLoader;
+import persistence.SaveWriter;
+import persistence.Writable;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.SocketOption;
 import java.util.List;
 import java.util.Scanner;
 
 public class App {
     private static final int RENT = 50;
+    private static final String SAVE_PATH = "data/SaveData.json";
 
     private Player plr;
     private Store store;
     private int day;
     private Scanner input;
+
 
 
     public App() {
@@ -69,10 +76,17 @@ public class App {
         System.out.println("To view your inventory type 'inv'.");
         System.out.println("To go to the store type 'store'.");
         System.out.println("To go to start the day write 'start'.");
+        System.out.println("To load the previous save write 'load'.");
+        System.out.println("To save the app state write 'save'.");
         System.out.println("To go to quit write 'quit'.");
 
         String i = input.nextLine();
 
+        return mainControlInputProcess(i);
+    }
+
+    //EFFECTS: Processes input in main control
+    public boolean mainControlInputProcess(String i) {
         switch (i.toLowerCase()) {
             case "inv":
                 System.out.println("\nYour inventory:");
@@ -84,12 +98,19 @@ public class App {
                 break;
             case "start":
                 return true;
+            case "load":
+                loadData();
+                break;
+            case "save":
+                saveData();
+                break;
             case "quit":
                 System.exit(0);
                 break;
         }
         return false;
     }
+
 
     //EFFECTS: starts the day, for every product, this method rolls the dice to see if it sells.
     public void beginDay() {
@@ -123,6 +144,32 @@ public class App {
         System.out.println("\nTotal Profit: " + profit);
         System.out.println("Total Sales: " + sales);
     }
+
+
+    //EFFECTS: Loads data from SAVE_PATH, if IOException fires, returns error msg
+    public void loadData() {
+        try {
+            SaveLoader loader = new SaveLoader(SAVE_PATH);
+            store = loader.parseStore();
+            plr = store.getPlr();
+            day = loader.parseDay();
+            System.out.println("Save file loaded!");
+        } catch (IOException e) {
+            System.out.println("File loading failed, status: brokey");
+        }
+    }
+
+    //EFFECTS: Saves data to SAVE_PATH
+    public void saveData() {
+        try {
+            SaveWriter fileWriter = new SaveWriter(SAVE_PATH);
+            fileWriter.writeData(store, day);
+            fileWriter.getWriter().close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Could not save data, status: File brokey");
+        }
+    }
+
 
     //EFFECTS: prints a message stating the amount of items that went on clearance.
     public void clearanceCheck() {

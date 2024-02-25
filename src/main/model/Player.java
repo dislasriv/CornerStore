@@ -1,6 +1,10 @@
 package model;
 
 import model.products.Product;
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.util.ArrayList;
 /*
 A class holding all the statistics for a player and their inventory.
 
@@ -11,7 +15,7 @@ fields:
 - exp --> experience points of the player.
  */
 
-public class Player {
+public class Player implements Writable {
     public static final int INITIAL_MONEY = 30;
 
     private int level;
@@ -75,6 +79,16 @@ public class Player {
         return "You are level " + level + " and have $" + money + ".";
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject plrData = new JSONObject();
+        plrData.put("level", level);
+        plrData.put("money", money);
+        plrData.put("exp", exp);
+        plrData.put("inv", inv.toJson());
+        return plrData;
+    }
+
 
     //getters
     public int getLevel() {
@@ -91,5 +105,22 @@ public class Player {
 
     public int getExp() {
         return exp;
+    }
+
+    //setters
+    public void setLevel(int l) {
+        level = l;
+    }
+
+    public void setMoney(int m) {
+        money = m;
+    }
+
+    public void setInventory(Inventory i) {
+        inv = i;
+    }
+
+    public void setExp(int e) {
+        exp = e;
     }
 }

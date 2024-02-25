@@ -1,6 +1,9 @@
 package model;
 
 import model.products.Product;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.util.ArrayList;
 
@@ -10,7 +13,7 @@ A list of items interpreted as an inventory, this holds everything the player cu
 fields:
 - prodList --> the list of items held in the inventory.
  */
-public class Inventory {
+public class Inventory implements Writable {
 
     private ArrayList<Product> prodList;
 
@@ -46,6 +49,19 @@ public class Inventory {
         return dropped;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject invData = new JSONObject();
+        JSONArray prodListData = new JSONArray();
+
+        for (Product p : prodList) {
+            prodListData.put(p.toJson());
+        }
+
+        invData.put("prodList", prodListData);
+        return invData;
+    }
+
     //getters
     public int getSize() {
         return prodList.size();
@@ -54,5 +70,11 @@ public class Inventory {
     public ArrayList<Product> getProducts() {
         return prodList;
     }
+
+    //setters
+    public void setProducts(ArrayList<Product> p) {
+        prodList = p;
+    }
+
 
 }

@@ -1,6 +1,8 @@
 
 import model.Inventory;
 import model.products.Product;
+import org.json.JSONObject;
+import org.json.JSONPointer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,6 @@ public class InventoryTest {
     private Inventory testInv;
     private Product p1;
     private Product p2;
-    private Product p3;
     private ArrayList<Product> testList;
 
     @BeforeEach
@@ -114,6 +115,30 @@ public class InventoryTest {
             p2.increaseTimeInStore();
         }
         assertEquals(1, testInv.dropCheck());
+    }
+
+    //toJson
+    @Test
+    void testToJson() {
+        testInv.addProduct(p1);
+        testInv.addProduct(p2);
+        JSONObject invData = testInv.toJson();
+
+        assertEquals(invData.getJSONArray("prodList").get(0).toString(), p1.toJson().toString());
+        assertEquals(invData.getJSONArray("prodList").get(1).toString(), p2.toJson().toString());
+    }
+
+    @Test
+    void testToJsonMulti() {
+        Inventory t2 = new Inventory();
+        t2.addProduct(p2);
+        t2.addProduct(p1);
+        JSONObject invData = t2.toJson();
+
+        assertEquals(invData.getJSONArray("prodList").get(0).toString(), p2.toJson().toString());
+        assertEquals(invData.getJSONArray("prodList").get(1).toString(), p1.toJson().toString());
+
+        testToJson();
     }
 
     //getters

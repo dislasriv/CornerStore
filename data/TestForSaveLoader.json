@@ -1,0 +1,54 @@
+{
+  "store" : {
+
+    "availableOptions" : [
+      {
+        "name" : "Orange",
+        "timeInStore" : 0,
+        "cost" : 1,
+        "expiryDate" : 2,
+        "salePrice": 5,
+        "lvlReq": 0,
+        "expValue": 2,
+        "unlockCost": 0,
+        "clearance": false
+      },
+      {
+        "name" : "Orange Juice",
+        "timeInStore" : 0,
+        "cost" : 7,
+        "expiryDate" : 2,
+        "salePrice": 15,
+        "lvlReq": 1,
+        "expValue": 2,
+        "unlockCost": 50,
+        "clearance": false
+      }
+    ],
+    "availableUnlocks" : [
+
+    ],
+    "plr" : {
+      "level": 13,
+      "money": 6900,
+      "exp" : 900,
+      "inv": {
+        "prodList": [
+          {
+            "name": "poop",
+            "timeInStore": 19,
+            "cost": 13,
+            "expiryDate": 20,
+            "salePrice": 26,
+            "lvlReq": 20,
+            "expValue": 22,
+            "unlockCost": 1,
+            "clearance": false
+          }
+        ]
+      }
+    }
+  },
+
+  "day" : 96
+}

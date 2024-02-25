@@ -3,6 +3,9 @@ package model;
 import model.products.Orange;
 import model.products.OrangeJuice;
 import model.products.Product;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.util.ArrayList;
 
@@ -14,7 +17,7 @@ fields:
 - availableUnlocks --> string commands for unlockable items, used by UI.
 - plr --> player variable used to access and modify the player when they interact with the store.
  */
-public class Store {
+public class Store implements Writable {
     public static final String CANT_AFFORD = "You cannot afford this.";
     public static final String DNE = "This is is not a valid purchase option.";
     public static final String SUCCESSFUL_BUY = "You bought a(n) ";
@@ -104,6 +107,27 @@ public class Store {
         }
     }
 
+    //Json trans
+    @Override
+    public JSONObject toJson() {
+        JSONObject storeData = new JSONObject();
+        storeData.put("availableOptions", prodListToJson(availableOptions));
+        storeData.put("availableUnlocks", prodListToJson(availableUnlocks));
+        storeData.put("plr", plr.toJson());
+
+        return storeData;
+    }
+
+    public JSONArray prodListToJson(ArrayList<Product> lop) {
+        JSONArray arrayData = new JSONArray();
+
+        for (Product p : lop) {
+            arrayData.put(p.toJson());
+        }
+
+        return arrayData;
+    }
+
     //getters
     public ArrayList<Product> getAvailibleOptions() {
         return availableOptions;
@@ -116,4 +140,19 @@ public class Store {
     public Player getPlr() {
         return plr;
     }
+
+    //setters
+    public void setAvailableUnlocks(ArrayList<Product> un) {
+        availableUnlocks = un;
+    }
+
+    public void setAvailableOptions(ArrayList<Product> op) {
+        availableOptions = op;
+    }
+
+    public void setPlayer(Player p) {
+        plr = p;
+    }
+
+
 }

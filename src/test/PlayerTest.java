@@ -3,6 +3,7 @@ import model.Player;
 import model.products.Orange;
 import model.products.OrangeJuice;
 import model.products.Product;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -146,6 +147,34 @@ public class PlayerTest {
         testPlr.modifyMoney(25);
         assertEquals("You are level 2 and have $" + (Player.INITIAL_MONEY + 25 + "."),
                 testPlr.toString());
+    }
+
+    //toJson
+    @Test
+    void testToJson() {
+        JSONObject plrData = testPlr.toJson();
+
+        assertEquals(plrData.get("level"), plrData.get("level"));
+        assertEquals(plrData.get("money"), plrData.get("money"));
+        assertEquals(plrData.get("exp"), plrData.get("exp"));
+        assertEquals(plrData.get("inv").toString(), plrData.get("inv").toString());
+    }
+
+    @Test
+    void testToJsonMulti() {
+        Player newTestPlr = new Player();
+        newTestPlr.setMoney(69);
+        newTestPlr.setExp(40);
+        newTestPlr.setLevel(90000);
+        newTestPlr.getInventory().addProduct(new Orange());
+
+        JSONObject plrData = newTestPlr.toJson();
+        assertEquals(plrData.get("level"), plrData.get("level"));
+        assertEquals(plrData.get("money"), plrData.get("money"));
+        assertEquals(plrData.get("exp"), plrData.get("exp"));
+        assertEquals(plrData.get("inv").toString(), plrData.get("inv").toString());
+
+        testToJson();
     }
 
     //getters

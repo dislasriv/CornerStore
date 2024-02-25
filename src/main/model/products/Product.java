@@ -1,6 +1,9 @@
 package model.products;
 
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import static java.lang.Math.floor;
 
 /*
@@ -15,7 +18,7 @@ fields:
 - lvlReq --> the level required to unlock this item.
 - expValue --> amount of exp gained from buying and selling the product.
  */
-public class Product {
+public class Product implements Writable {
 
     private String name;
     private int timeInStore;
@@ -70,6 +73,24 @@ public class Product {
         return new Product(name, cost, expiryDate, salePrice, lvlReq, expValue, unlockCost);
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject prodToWrite = new JSONObject();
+
+        //put all fields
+        prodToWrite.put("name", name);
+        prodToWrite.put("timeInStore", timeInStore);
+        prodToWrite.put("cost", cost);
+        prodToWrite.put("expiryDate", expiryDate);
+        prodToWrite.put("salePrice", salePrice);
+        prodToWrite.put("lvlReq", lvlReq);
+        prodToWrite.put("expValue", expValue);
+        prodToWrite.put("unlockCost", unlockCost);
+        prodToWrite.put("clearance", clearance);
+
+
+        return prodToWrite;
+    }
 
     //getters
     public String getName() {
@@ -100,8 +121,21 @@ public class Product {
         return unlockCost;
     }
 
+    public int getExpiryDate() {
+        return expiryDate;
+    }
+
     public boolean onClearance() {
         return clearance;
     }
 
+    //setters
+    public void setClearance(boolean c) {
+        clearance = c;
+    }
+
+    //setters
+    public void setTimeInStore(int t) {
+        timeInStore = t;
+    }
 }

@@ -1,6 +1,5 @@
-package model.productTest;
+package model.products;
 
-import model.products.OrangeJuice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

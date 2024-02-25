@@ -1,0 +1,67 @@
+{
+    "store": {
+        "plr": {
+            "inv": {"prodList": [
+                {
+                    "expiryDate": 2,
+                    "lvlReq": 0,
+                    "timeInStore": 0,
+                    "cost": 1,
+                    "salePrice": 5,
+                    "name": "Orange",
+                    "clearance": false,
+                    "expValue": 2,
+                    "unlockCost": 0
+                },
+                {
+                    "expiryDate": 2,
+                    "lvlReq": 0,
+                    "timeInStore": 0,
+                    "cost": 1,
+                    "salePrice": 5,
+                    "name": "Orange",
+                    "clearance": false,
+                    "expValue": 2,
+                    "unlockCost": 0
+                },
+                {
+                    "expiryDate": 2,
+                    "lvlReq": 0,
+                    "timeInStore": 0,
+                    "cost": 1,
+                    "salePrice": 5,
+                    "name": "Orange",
+                    "clearance": false,
+                    "expValue": 2,
+                    "unlockCost": 0
+                }
+            ]},
+            "money": 27,
+            "level": 0,
+            "exp": 1
+        },
+        "availableUnlocks": [{
+            "expiryDate": 2,
+            "lvlReq": 1,
+            "timeInStore": 0,
+            "cost": 7,
+            "salePrice": 15,
+            "name": "Orange Juice",
+            "clearance": false,
+            "expValue": 2,
+            "unlockCost": 50
+        }],
+        "availableOptions": [{
+            "expiryDate": 2,
+            "lvlReq": 0,
+            "timeInStore": 0,
+            "cost": 1,
+            "salePrice": 5,
+            "name": "Orange",
+            "clearance": false,
+            "expValue": 2,
+            "unlockCost": 0
+        }]
+    },
+    "day": 1
+}
