@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 /*
-Class that tests that saving works on a simulated app state
+Class that tests that saving works on a simulated app state.
  */
 
 public class SaveWriterTest {

@@ -10,12 +10,6 @@ import java.util.Scanner;
 /*
 A class made to separate store related UI from App. This class holds all of the specification
 for the behaviour of the store screen.
-
-fields:
-app --> the app that instantiated this class, used to grab methods.
-input --> a scanner to get user input.
-store --> the game's running store.
-plr --> the running player
  */
 public class RunStore {
 

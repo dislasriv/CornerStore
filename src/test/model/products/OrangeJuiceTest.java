@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
- tests for the orange class.
+ tests for the orange juice class.
  */
 public class OrangeJuiceTest {
 

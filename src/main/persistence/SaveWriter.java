@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
 /*
-class that writes current app state to file
+class that writes current app state to a specific file.
  */
 public class SaveWriter {
 
@@ -27,6 +27,8 @@ public class SaveWriter {
         writer = new PrintWriter(new File(destination));
     }
 
+
+    //MODIFIES: SaveData.json
     //EFFECTS: Turns every dynamic field active in the app into JSON text that the writer
     //         prints to the save file (using writer.print).
     public void writeData(Store store, int day) {

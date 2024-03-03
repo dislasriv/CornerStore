@@ -1,6 +1,7 @@
 package model;
 
 import model.products.Orange;
+import model.products.OrangeGum;
 import model.products.OrangeJuice;
 import model.products.Product;
 import org.json.JSONArray;
@@ -11,11 +12,6 @@ import java.util.ArrayList;
 
 /*
 A store where you can buy stock or unlock new stock. Instantiated with app.
-
-fields:
-- availableOptions --> string commands for items you can currently buy, used by UI
-- availableUnlocks --> string commands for unlockable items, used by UI.
-- plr --> player variable used to access and modify the player when they interact with the store.
  */
 public class Store implements Writable {
     public static final String CANT_AFFORD = "You cannot afford this.";
@@ -34,6 +30,7 @@ public class Store implements Writable {
         //initialize fields
         availableOptions = new ArrayList<Product>();
         availableOptions.add(new Orange());
+        availableOptions.add(new OrangeGum());
 
         availableUnlocks = new ArrayList<Product>();
         availableUnlocks.add(new OrangeJuice());

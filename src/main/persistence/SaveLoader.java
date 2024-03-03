@@ -1,9 +1,5 @@
 package persistence;
 
-
-// Referenced from the JsonSerialization Demo
-// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-
 import model.Inventory;
 import model.Player;
 import model.Store;
@@ -18,8 +14,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
+
 /*
-Class with all loading operations
+Class with all save data loading operations.
  */
 public class SaveLoader {
     private String source;

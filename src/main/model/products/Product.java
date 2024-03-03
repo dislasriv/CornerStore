@@ -8,15 +8,6 @@ import static java.lang.Math.floor;
 
 /*
 A product that can be bought in a store, these are added to the players inventory when bought.
-
-fields:
-- name --> name of item
-- timeInStore --> how many days you have owned the item.
-- cost --> How much it costs the PLAYER to buy
-- expiryDate --> how many days until the item goes on clearance
-- salePrice --> How much the item can be SOLD for
-- lvlReq --> the level required to unlock this item.
-- expValue --> amount of exp gained from buying and selling the product.
  */
 public class Product implements Writable {
 

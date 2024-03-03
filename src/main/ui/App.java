@@ -6,11 +6,6 @@ steps called days, at the start of a day you can view your inventory and buy thi
 When you 'start' the day, all of the products in your inventory have a chance to sell.
 The cycle will then repeat.
 
-fields:
-plr --> the running player
-store --> the game's running store
-day --> the current day in the game
-input --> a scanner to get user input.
  */
 
 import model.Player;
@@ -165,6 +160,7 @@ public class App {
             SaveWriter fileWriter = new SaveWriter(SAVE_PATH);
             fileWriter.writeData(store, day);
             fileWriter.getWriter().close();
+            System.out.println("Game saved!");
         } catch (FileNotFoundException e) {
             System.out.println("Could not save data, status: File brokey");
         }

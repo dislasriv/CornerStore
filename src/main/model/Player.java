@@ -7,12 +7,6 @@ import persistence.Writable;
 import java.util.ArrayList;
 /*
 A class holding all the statistics for a player and their inventory.
-
-fields:
-- level --> the level of the player
-- money --> how much money the player has left.
-- Inventory --> a reference to the players list of items.
-- exp --> experience points of the player.
  */
 
 public class Player implements Writable {
