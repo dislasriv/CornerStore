@@ -3,7 +3,6 @@ package ui;
 import model.Player;
 import model.Store;
 import model.products.Product;
-import ui.App;
 
 import java.util.Scanner;
 
@@ -53,7 +52,7 @@ public class RunStore {
         switch (i.toLowerCase()) {
             case "options":
                 System.out.println("\nPossible Products:");
-                app.printProducts(store.getAvailibleOptions());
+                app.printProducts(store.getAvailableOptions());
                 //product buying sequence
                 tryBuy();
                 break;
@@ -87,10 +86,10 @@ public class RunStore {
     public void printUnlocks() {
         System.out.println("\nPossible Unlocks:");
         int i = 1;
-        for (Product p : store.getAvailibleUnlocks()) {
-            System.out.println();
+        for (Product p : store.getAvailableUnlocks()) {
             System.out.println(i + ": " + p);
             System.out.println("It can be unlocked for $" + p.getUnlockCost() + ".");
+            i++;
         }
     }
 }

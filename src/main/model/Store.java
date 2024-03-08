@@ -1,9 +1,6 @@
 package model;
 
-import model.products.Orange;
-import model.products.OrangeGum;
-import model.products.OrangeJuice;
-import model.products.Product;
+import model.products.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -34,6 +31,7 @@ public class Store implements Writable {
 
         availableUnlocks = new ArrayList<Product>();
         availableUnlocks.add(new OrangeJuice());
+        availableUnlocks.add(new OrangeSorbet());
 
         this.plr = plr;
     }
@@ -126,11 +124,11 @@ public class Store implements Writable {
     }
 
     //getters
-    public ArrayList<Product> getAvailibleOptions() {
+    public ArrayList<Product> getAvailableOptions() {
         return availableOptions;
     }
 
-    public ArrayList<Product> getAvailibleUnlocks() {
+    public ArrayList<Product> getAvailableUnlocks() {
         return availableUnlocks;
     }
 

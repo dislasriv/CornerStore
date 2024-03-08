@@ -37,8 +37,8 @@ public class StoreTest {
     //testConstructor
     @Test
     void testConstructor() {
-        assertEquals("Orange", newStore.getAvailibleOptions().get(0).getName());
-        assertEquals("Orange Juice", newStore.getAvailibleUnlocks().get(0).getName());
+        assertEquals("Orange", newStore.getAvailableOptions().get(0).getName());
+        assertEquals("Orange Juice", newStore.getAvailableUnlocks().get(0).getName());
         assertTrue(testPlr.equals(newStore.getPlr()));
     }
 
@@ -90,7 +90,7 @@ public class StoreTest {
         //setup
         testPlr.modifyMoney(OrangeJuice.UNLOCK_COST);
         int cmoney = testPlr.getMoney();
-        int clength = newStore.getAvailibleOptions().size();
+        int clength = newStore.getAvailableOptions().size();
 
         testPlr.gainExp(1000);
         testPlr.checkLevelUp();
@@ -98,7 +98,7 @@ public class StoreTest {
                 newStore.unlockProduct("OrANge Juice"));
 
         assertEquals(cmoney - OrangeJuice.UNLOCK_COST, testPlr.getMoney());
-        assertEquals(clength + 1, newStore.getAvailibleOptions().size());
+        assertEquals(clength + 1, newStore.getAvailableOptions().size());
     }
 
     //toJson
@@ -107,9 +107,9 @@ public class StoreTest {
         JSONObject storeData = newStore.toJson();
 
         assertEquals(storeData.getJSONArray("availableOptions").get(0).toString(),
-                newStore.getAvailibleOptions().get(0).toJson().toString());
+                newStore.getAvailableOptions().get(0).toJson().toString());
         assertEquals(storeData.getJSONArray("availableUnlocks").get(0).toString(),
-                newStore.getAvailibleUnlocks().get(0).toJson().toString());
+                newStore.getAvailableUnlocks().get(0).toJson().toString());
         assertEquals(storeData.getJSONObject("plr").toString(),
                 testPlr.toJson().toString());
     }
@@ -122,14 +122,14 @@ public class StoreTest {
         newPlr.setLevel(13);
 
         Store newStore = new Store(newPlr);
-        newStore.getAvailibleUnlocks().add(new Orange());
+        newStore.getAvailableUnlocks().add(new Orange());
 
         JSONObject storeData = newStore.toJson();
 
         assertEquals(storeData.getJSONArray("availableOptions").get(0).toString(),
-                newStore.getAvailibleOptions().get(0).toJson().toString());
+                newStore.getAvailableOptions().get(0).toJson().toString());
         assertEquals(storeData.getJSONArray("availableUnlocks").get(0).toString(),
-                newStore.getAvailibleUnlocks().get(0).toJson().toString());
+                newStore.getAvailableUnlocks().get(0).toJson().toString());
         assertEquals(storeData.getJSONObject("plr").toString(),
                 newPlr.toJson().toString());
     }

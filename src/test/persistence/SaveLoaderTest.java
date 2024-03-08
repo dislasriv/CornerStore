@@ -103,9 +103,9 @@ public class SaveLoaderTest {
     @Test
     void testParseStoreAndPlayer () {
         Store testStore = testSave.parseStore();
-        assertEquals("Orange", testStore.getAvailibleOptions().get(0).getName());
-        assertEquals("Orange Juice", testStore.getAvailibleOptions().get(1).getName());
-        assertEquals(0, testStore.getAvailibleUnlocks().size());
+        assertEquals("Orange", testStore.getAvailableOptions().get(0).getName());
+        assertEquals("Orange Juice", testStore.getAvailableOptions().get(1).getName());
+        assertEquals(0, testStore.getAvailableUnlocks().size());
         testParsePlayer(testStore.getPlr());
     }
     void testParsePlayer (Player testPlr) {

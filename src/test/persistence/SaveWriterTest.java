@@ -4,7 +4,6 @@ import model.Player;
 import model.Store;
 import model.products.Orange;
 import model.products.Product;
-import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -89,7 +88,7 @@ public class SaveWriterTest {
         testStore2.getPlr().getInventory().addProduct(new Orange());
 
         //augment store
-        testStore2.getAvailibleOptions().add(
+        testStore2.getAvailableOptions().add(
                 new Product("moo", 12 , 3, 2, 3,4,5));
 
         testWriter.writeData(testStore2, 900);
