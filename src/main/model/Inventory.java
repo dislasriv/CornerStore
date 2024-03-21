@@ -46,6 +46,8 @@ public class Inventory implements Writable {
         return dropped;
     }
 
+
+    //EFFECTS: Converts this inventory instance into a JSON object.
     @Override
     public JSONObject toJson() {
         JSONObject invData = new JSONObject();

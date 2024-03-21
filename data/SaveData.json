@@ -5,34 +5,12 @@
                 {
                     "expiryDate": 2,
                     "lvlReq": 0,
-                    "timeInStore": 3,
+                    "timeInStore": 0,
                     "cost": 4,
-                    "salePrice": 6,
+                    "salePrice": 9,
                     "name": "Orange Gum",
-                    "clearance": true,
+                    "clearance": false,
                     "expValue": 3,
-                    "unlockCost": 0
-                },
-                {
-                    "expiryDate": 2,
-                    "lvlReq": 0,
-                    "timeInStore": 3,
-                    "cost": 4,
-                    "salePrice": 6,
-                    "name": "Orange Gum",
-                    "clearance": true,
-                    "expValue": 3,
-                    "unlockCost": 0
-                },
-                {
-                    "expiryDate": 2,
-                    "lvlReq": 0,
-                    "timeInStore": 3,
-                    "cost": 1,
-                    "salePrice": 3,
-                    "name": "Orange",
-                    "clearance": true,
-                    "expValue": 2,
                     "unlockCost": 0
                 },
                 {
@@ -58,21 +36,34 @@
                     "unlockCost": 0
                 }
             ]},
-            "money": 39,
-            "level": 2,
-            "exp": 18
+            "money": 21,
+            "level": 0,
+            "exp": 1
         },
-        "availableUnlocks": [{
-            "expiryDate": 2,
-            "lvlReq": 1,
-            "timeInStore": 0,
-            "cost": 7,
-            "salePrice": 15,
-            "name": "Orange Juice",
-            "clearance": false,
-            "expValue": 2,
-            "unlockCost": 50
-        }],
+        "availableUnlocks": [
+            {
+                "expiryDate": 2,
+                "lvlReq": 1,
+                "timeInStore": 0,
+                "cost": 7,
+                "salePrice": 15,
+                "name": "Orange Juice",
+                "clearance": false,
+                "expValue": 2,
+                "unlockCost": 50
+            },
+            {
+                "expiryDate": 4,
+                "lvlReq": 2,
+                "timeInStore": 0,
+                "cost": 8,
+                "salePrice": 19,
+                "name": "Orange Sorbet",
+                "clearance": false,
+                "expValue": 5,
+                "unlockCost": 100
+            }
+        ],
         "availableOptions": [
             {
                 "expiryDate": 2,
@@ -98,5 +89,5 @@
             }
         ]
     },
-    "day": 4
+    "day": 1
 }

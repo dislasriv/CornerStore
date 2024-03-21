@@ -32,7 +32,7 @@ public class App {
     private Scanner input;
 
 
-
+    //EFFECTS: Creates a new App with all relevant objects to play the game
     public App() {
         plr = new Player();
         store = new Store(plr);
@@ -188,14 +188,17 @@ public class App {
     }
 
 
-    //EFFECTS: prints a list of products
-    public void printProducts(List<Product> list) {
+    //EFFECTS: prints a list of products and returns that string
+    public String printProducts(List<Product> list) {
         int i = 1;
+        String out = "";
         for (Product p : list) {
             System.out.println(i + ": " + p);
+            out += i + ": " + p + "\n\n";
             i++;
         }
         System.out.println();
+        return out;
     }
 
     //EFFECTS: adds exp and checks if player leveled  after a sale.
@@ -217,6 +220,19 @@ public class App {
         //charge as normal
         System.out.println("Its been five days, rent time! You have been charged $" + RENT + ".");
         plr.modifyMoney(-1 * RENT);
+    }
+
+    //getters
+    public Player getPlayer() {
+        return plr;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public int getDay() {
+        return day;
     }
 
 }

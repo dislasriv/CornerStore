@@ -73,6 +73,8 @@ public class Player implements Writable {
         return "You are level " + level + " and have $" + money + ".";
     }
 
+
+    //EFFECTS: Converts this player instance into a JSON object.
     @Override
     public JSONObject toJson() {
         JSONObject plrData = new JSONObject();

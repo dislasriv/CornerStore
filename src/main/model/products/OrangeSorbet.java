@@ -1,5 +1,8 @@
 package model.products;
 
+/*
+A particular instance of the Product class with specific stats.
+ */
 public class OrangeSorbet extends Product {
     public static final String NAME = "Orange Sorbet";
     public static final int COST = 8;

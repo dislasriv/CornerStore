@@ -52,6 +52,7 @@ public class Product implements Writable {
         timeInStore++;
     }
 
+    @Override
     //EFFECTS: Halves value of item if age >= expiry.
     public String toString() {
         return "A " + name + " it costs $" + cost + " to buy and sells for $"
@@ -60,10 +61,12 @@ public class Product implements Writable {
     }
 
     //EFFECTS: Reconstructs the product, resetting the clone's dynamic stats.
+    @Override
     public Product clone() {
         return new Product(name, cost, expiryDate, salePrice, lvlReq, expValue, unlockCost);
     }
 
+    //EFFECTS: Converts this product instance into a JSON object.
     @Override
     public JSONObject toJson() {
         JSONObject prodToWrite = new JSONObject();

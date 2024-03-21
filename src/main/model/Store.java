@@ -102,7 +102,7 @@ public class Store implements Writable {
         }
     }
 
-    //Json trans
+    //EFFECTS: Converts this store instance into a JSONObject.
     @Override
     public JSONObject toJson() {
         JSONObject storeData = new JSONObject();
@@ -113,6 +113,7 @@ public class Store implements Writable {
         return storeData;
     }
 
+    //EFFECTS: converts a list of products to JSON format.
     public JSONArray prodListToJson(ArrayList<Product> lop) {
         JSONArray arrayData = new JSONArray();
 
