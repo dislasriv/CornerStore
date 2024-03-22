@@ -36,6 +36,7 @@ public class Store implements Writable {
         this.plr = plr;
     }
 
+    //MODIFIES: Player
     //EFFECTS: If the string has a corresponding product in availableOptions regardless of case...
     //              If plr.getMoney() >= Product.getCost();
     //                    method takes the cost of the product from the player, and adds a clone instance of the product
@@ -66,7 +67,7 @@ public class Store implements Writable {
     }
 
 
-    //MODIFIES: this
+    //MODIFIES: this, Player
     //EFFECTS: If string has a corresponding product is in availableUnlocks
     //                  If level is too low return error message stating this.
     //                 else If player can afford upgrade...

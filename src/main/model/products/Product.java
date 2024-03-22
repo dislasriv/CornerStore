@@ -4,7 +4,6 @@ package model.products;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import static java.lang.Math.floor;
 
 /*
 A product that can be bought in a store, these are added to the players inventory when bought.
@@ -128,7 +127,6 @@ public class Product implements Writable {
         clearance = c;
     }
 
-    //setters
     public void setTimeInStore(int t) {
         timeInStore = t;
     }

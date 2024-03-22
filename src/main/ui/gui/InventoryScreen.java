@@ -14,19 +14,20 @@ import java.awt.event.ActionListener;
 
 public class InventoryScreen extends GenericScreen implements ActionListener {
 
-    public static final String RETURN_COMMAND = "return";
 
     //EFFECTS: Initializes the screen
-    public InventoryScreen(JFrame toGoBackTo, App app) {
+    public InventoryScreen(GenericScreen toGoBackTo, App app) {
         super(toGoBackTo, app);
     }
 
+    //MODIFIES: this
     //EFFECTS: Sets up the main screen JFrame in its entirety
     public void initInvScreen() {
         initUi();
         thisScreen.setVisible(true);
     }
 
+    //MODIFIES: this
     //EFFECTS: renders all the inventory UI
     public void initUi() {
         //get the inventory
@@ -49,19 +50,15 @@ public class InventoryScreen extends GenericScreen implements ActionListener {
         thisPanel.add(inventoryPane);
     }
 
+    //MODIFIES: this
     //EFFECTS: Handles inventory screen events
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case RETURN_COMMAND:
-                goBackToMain();
+                goBack();
                 break;
         }
     }
 
-    //EFFECTS: returns the app to the main screen.
-    public void goBackToMain() {
-        thisScreen.setVisible(false);
-        screenToGoBackTo.setVisible(true);
-    }
 }

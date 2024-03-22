@@ -4,11 +4,10 @@ import model.products.Product;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.util.ArrayList;
+
 /*
 A class holding all the statistics for a player and their inventory.
  */
-
 public class Player implements Writable {
     public static final int INITIAL_MONEY = 30;
 

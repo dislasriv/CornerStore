@@ -7,19 +7,21 @@ import java.awt.*;
 
 /* captures all generic screen behaviour that all screens will share*/
 public abstract class GenericScreen {
+    //constants
+    public static final String RETURN_COMMAND = "return";
 
     //fields
-    protected JFrame screenToGoBackTo;
+    protected GenericScreen screenToGoBackTo;
     protected JFrame thisScreen;
     protected JPanel thisPanel;
+    protected JLabel plrDay;
+    protected JLabel plrMoney;
+
     protected App app;
 
-    //EFFECTS: Constructs a generic screen
-    public GenericScreen(JFrame toGoBackTo, App app) {
-        //set fields
-        screenToGoBackTo = toGoBackTo;
-        this.app = app;
 
+    //EFFECTS: Constructs a generic screen
+    public GenericScreen(GenericScreen toGoBackTo, App app) {
         //make screen
         thisScreen = new JFrame("Corner Store");
         thisScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,5 +39,43 @@ public abstract class GenericScreen {
         //apply settings
         thisScreen.pack();
         thisScreen.setResizable(false);
+
+
+        //set fields
+        screenToGoBackTo = toGoBackTo;
+        this.app = app;
+        updateLabels();
+    }
+
+    //MODIFIES: this
+    //EFFECTS: sets all of the universal labels for all screeens
+    public void updateLabels() {
+
+        if (plrDay == null) {
+            plrDay = new JLabel("Day: " + app.getDay());
+            plrDay.setBounds(800,0, 200, 50);
+            thisPanel.add(plrDay);
+
+            plrMoney = new JLabel("Money: " + app.getPlayer().getMoney() + "$");
+            plrMoney.setBounds(800,15, 200, 50);
+            thisPanel.add(plrMoney);
+        } else {
+            plrDay.setText("Day: " + app.getDay());
+            plrMoney.setText("Money: " + app.getPlayer().getMoney() + "$");
+        }
+
+    }
+
+    //MODIFIES: this, screenToGoBackTo
+    //EFFECTS: returns the app to the active screen's screen to go back to. and updates its relevant labels
+    public void goBack() {
+        thisScreen.setVisible(false);
+        screenToGoBackTo.updateLabels();
+        screenToGoBackTo.getScreen().setVisible(true);
+    }
+
+    //getters
+    public JFrame getScreen() {
+        return thisScreen;
     }
 }

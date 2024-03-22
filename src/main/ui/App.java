@@ -1,11 +1,11 @@
 package ui;
 
+
 /*
-This class indefinitely runs the runDay function, and specifies most of the UI. This game iterates infinitely over
+Main indefinitely runs the runDay function. This class specifies most of the UI. This game iterates infinitely over
 steps called days, at the start of a day you can view your inventory and buy things.
 When you 'start' the day, all of the products in your inventory have a chance to sell.
 The cycle will then repeat.
-
  */
 
 import model.Player;
@@ -42,7 +42,7 @@ public class App {
 
     //EFFECTS: runs a "day" in the program
     public void runDay() {
-        day++;
+        incrementDay();
         System.out.println("It is day " + day + " of your store!");
         System.out.println();
         //see how many items went on clearance
@@ -106,23 +106,22 @@ public class App {
         return false;
     }
 
-
+    //MODIFIES: Store, Player
     //EFFECTS: starts the day, for every product, this method rolls the dice to see if it sells.
-    public void beginDay() {
+    public String beginDay() {
         int profit = 0;
         int sales = 0;
-        List<Product> products = plr.getInventory().getProducts();
 
-        for (int i  = 0; i < products.size(); i++) {
+        for (int i  = 0; i < plr.getInventory().getProducts().size(); i++) {
             //40% chance to sell
             if (Math.random() * 10 <= 4) {
-                Product thisProduct = products.get(i);
+                Product thisProduct = plr.getInventory().getProducts().get(i);
                 //increase profit
                 profit += thisProduct.getSalePrice();
                 //increase sales
                 sales++;
 
-                plr.modifyMoney(products.get(i).getSalePrice());
+                plr.modifyMoney(plr.getInventory().getProducts().get(i).getSalePrice());
                 plr.getInventory().removeProduct(i);
                 expSequence(thisProduct);
 
@@ -138,6 +137,7 @@ public class App {
         }
         System.out.println("\nTotal Profit: " + profit);
         System.out.println("Total Sales: " + sales);
+        return "This day:   Total Profit: " + profit + "      Total Sales: " + sales;
     }
 
 
@@ -166,7 +166,7 @@ public class App {
         }
     }
 
-
+    //MODIFIES: Player
     //EFFECTS: prints a message stating the amount of items that went on clearance.
     public void clearanceCheck() {
         int cleared = 0;
@@ -209,6 +209,7 @@ public class App {
         }
     }
 
+    //MODIFIES: Player
     //EFFECTS: If player does not afford rent game ends with a message, else a message is sent stating that the player
     //         has been charged.
     public void chargeRent() {
@@ -220,6 +221,12 @@ public class App {
         //charge as normal
         System.out.println("Its been five days, rent time! You have been charged $" + RENT + ".");
         plr.modifyMoney(-1 * RENT);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: Adds one to day, progresses the day
+    public void incrementDay() {
+        day++;
     }
 
     //getters
@@ -234,5 +241,7 @@ public class App {
     public int getDay() {
         return day;
     }
+
+
 
 }
