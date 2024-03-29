@@ -1,5 +1,7 @@
 package model;
 
+import model.eventsys.Event;
+import model.eventsys.EventLog;
 import model.products.Product;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -44,6 +46,21 @@ public class Inventory implements Writable {
             }
         }
         return dropped;
+    }
+
+    //EFFECTS: prints every product as a string
+    public String printInventory() {
+        int i = 1;
+        String out = "";
+        System.out.println("\nYour inventory:");
+        for (Product p : prodList) {
+            System.out.println(i + ": " + p);
+            out += i + ": " + p + "\n\n";
+            i++;
+        }
+        System.out.println();
+        EventLog.getInstance().logEvent(new Event("User viewed inventory!"));
+        return out;
     }
 
 

@@ -18,9 +18,6 @@ public class MainScreen extends GenericScreen implements ActionListener {
     public static final String PLAY_COMMAND = "play";
 
 
-    //other screens
-    private OptionsScreen optionsScreen;
-
     //components
     private JLabel dayStats;
 

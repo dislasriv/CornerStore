@@ -10,6 +10,8 @@ The cycle will then repeat.
 
 import model.Player;
 import model.Store;
+import model.eventsys.Event;
+import model.eventsys.EventLog;
 import model.products.Orange;
 import model.products.Product;
 import persistence.SaveLoader;
@@ -84,11 +86,10 @@ public class App {
     public boolean mainControlInputProcess(String i) {
         switch (i.toLowerCase()) {
             case "inv":
-                System.out.println("\nYour inventory:");
-                printProducts(plr.getInventory().getProducts());
+                plr.getInventory().printInventory();
                 break;
             case "store":
-                RunStore storeProtocol = new RunStore(this, input, store, plr);
+                RunStore storeProtocol = new RunStore( input, store, plr);
                 storeProtocol.runStore();
                 break;
             case "start":
@@ -100,7 +101,7 @@ public class App {
                 saveData();
                 break;
             case "quit":
-                System.exit(0);
+                quitApp();
                 break;
         }
         return false;
@@ -121,8 +122,7 @@ public class App {
                 //increase sales
                 sales++;
 
-                plr.modifyMoney(plr.getInventory().getProducts().get(i).getSalePrice());
-                plr.getInventory().removeProduct(i);
+                plr.sellProduct(i);
                 expSequence(thisProduct);
 
                 i--;
@@ -188,18 +188,6 @@ public class App {
     }
 
 
-    //EFFECTS: prints a list of products and returns that string
-    public String printProducts(List<Product> list) {
-        int i = 1;
-        String out = "";
-        for (Product p : list) {
-            System.out.println(i + ": " + p);
-            out += i + ": " + p + "\n\n";
-            i++;
-        }
-        System.out.println();
-        return out;
-    }
 
     //EFFECTS: adds exp and checks if player leveled  after a sale.
     public void expSequence(Product thisProduct) {
@@ -223,6 +211,18 @@ public class App {
         plr.modifyMoney(-1 * RENT);
     }
 
+
+    //EFFECTS: quits the app and prints the log of events that occurred in the console
+    public static void quitApp() {
+        int count = 1;
+        System.out.println();
+        for (Event e: EventLog.getInstance()) {
+            System.out.println("Event " + count + ": " + e.getDescription());
+            count++;
+        }
+        System.exit(0);
+    }
+
     //MODIFIES: this
     //EFFECTS: Adds one to day, progresses the day
     public void incrementDay() {
@@ -241,7 +241,4 @@ public class App {
     public int getDay() {
         return day;
     }
-
-
-
 }

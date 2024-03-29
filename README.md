@@ -38,4 +38,59 @@ and whether they are or clearance or not.
 
 
 - You can reload the state of my application by clicking "load" on the main screen.
+
+# Phase 4: Task 2
+### Possible Events
+- Player viewed inventory!
+- Player failed to buy product: did not exist.
+- Player failed to buy product: could not afford.
+- Player bought a(n) ITEM NAME for $ITEM PRICE.
+- Player sold a(n) ITEM NAME for $ITEM PRICE.
+
+
+# Phase 4: Task 3
+First of all I would refactor my code by making Product abstract
+and changing its tests to work with the new class type.
+My project only deals with particular instances of products
+(ie: Orange) so having product as an instantiable class 
+does not seem like the best design.
+
+Secondly, in the current state of my project, whenever a user 
+tries to access another screen in the GUI from 
+the main screen (ie: buy items, or inventory)
+an entirely new screen object is generated for the requested screen,
+wasting significant memory as more and more duplicate screens
+are made. Currently this implementation
+exists to allow the screens to let changes the player made
+on the main screen be actualized in other screens
+ by rerunning the screens' constructors and redefining their
+components. This implementation was made before I knew about the 
+observer pattern, so to refactor this design, I would 
+make every screen class an object of type Observable, but also observer
+since each screen would be watching other screens to look
+for updates. As of now, only the generic components that 
+every screen shares are updated when the screen changes.
+
+Third, some of my GUI code is cluttered and hard to read.
+Specifically, the checkIfBuying method in the OptionsScreen
+class has complicated, verbose and nested calls to the
+ImageIcon constructor when I try to update my visual component
+with a new image, all in one line. This is very hard to understand without comments.
+To fix this specific issue I would
+refactor this process into its own well documented method
+with each step that my current one line solution makes being separate
+(Get image from file, resize image, make new icon).
+
+Finally, I would create an abstract class called ConsoleRunner to 
+capture the general behaviour that App and RunStore share. Currently
+runStore has some identical behaviour to App. Both classes
+serve as a textual interface with options to perform actions.
+I could capture this in an abstract class by having a Map of
+actions and text commands, as well as a general menu/interface
+text template that each subclass could fill out. This would 
+help make my App and RunStore classes more concise, more related,
+and easier to read. Once this is done, I would remove App 
+and RunStore's associations to Player and Store and give
+them to ConsoleRunner to avoid duplicate fields and
+unnecessary coupling.
   

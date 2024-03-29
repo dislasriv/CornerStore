@@ -1,5 +1,7 @@
 package model;
 
+import model.eventsys.Event;
+import model.eventsys.EventLog;
 import model.products.Product;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -42,6 +44,8 @@ public class Player implements Writable {
         money += amount;
     }
 
+
+
     //REQUIRES: index < inv.getSize()
     //MODIFIES: this, Inventory.
     //EFFECTS: Removes the item at the given index from the inventory
@@ -52,6 +56,8 @@ public class Player implements Writable {
         modifyMoney(prod.getSalePrice());
         //remove product
         inv.getProducts().remove(index);
+        EventLog.getInstance().logEvent(new Event("Player sold a(n) " + prod.getName()
+                + " for $" + prod.getSalePrice() + "."));
     }
 
     //REQUIRES: amount >= 0

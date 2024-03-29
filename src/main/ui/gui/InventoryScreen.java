@@ -34,7 +34,7 @@ public class InventoryScreen extends GenericScreen implements ActionListener {
         Inventory toDisplay = app.getPlayer().getInventory();
 
         //make a textarea
-        JTextArea invText = new JTextArea(app.printProducts(toDisplay.getProducts()));
+        JTextArea invText = new JTextArea(toDisplay.printInventory());
         invText.setEditable(false);
 
         //set up a scrollable pane

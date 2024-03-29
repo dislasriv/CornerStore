@@ -1,9 +1,12 @@
 package ui.gui;
 
 import ui.App;
+import ui.gui.events.MicroWindowListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /* captures all generic screen behaviour that all screens will share*/
 public abstract class GenericScreen {
@@ -24,7 +27,7 @@ public abstract class GenericScreen {
     public GenericScreen(GenericScreen toGoBackTo, App app) {
         //make screen
         thisScreen = new JFrame("Corner Store");
-        thisScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        thisScreen.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         thisScreen.setPreferredSize(new Dimension(1000, 500));
 
         //center
@@ -40,6 +43,7 @@ public abstract class GenericScreen {
         thisScreen.pack();
         thisScreen.setResizable(false);
 
+        thisScreen.addWindowListener(new MicroWindowListener());
 
         //set fields
         screenToGoBackTo = toGoBackTo;

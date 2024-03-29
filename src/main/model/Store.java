@@ -1,5 +1,7 @@
 package model;
 
+import model.eventsys.Event;
+import model.eventsys.EventLog;
 import model.products.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,14 +56,26 @@ public class Store implements Writable {
             }
         }
         if (toClone == null) {
+            EventLog.getInstance().logEvent(new Event("Player failed to buy product: did not exist"));
             return DNE;
         }
+
+        return checkCanAffordProduct(toClone);
+    }
+
+    //MODIFIES: Player
+    //EFFECTS: essentially an extension of the buyProduct method, checks if player can afford product and lets
+    // them buy it/doesn't if the can/cant.
+    public String checkCanAffordProduct(Product toClone) {
         //check money
         if (plr.getMoney() >= toClone.getCost()) {
             plr.modifyMoney(-1 * toClone.getCost());
             plr.getInventory().addProduct(toClone.clone());
+            EventLog.getInstance().logEvent(new Event("Player bought a(n) " + toClone.getName() + " for $"
+                    + toClone.getSalePrice() + "."));
             return SUCCESSFUL_BUY + toClone.getName() + ".";
         } else {
+            EventLog.getInstance().logEvent(new Event("Player failed to buy product: could not afford"));
             return CANT_AFFORD;
         }
     }
@@ -146,7 +160,6 @@ public class Store implements Writable {
     public void setAvailableOptions(ArrayList<Product> op) {
         availableOptions = op;
     }
-
 
 
 }

@@ -4,6 +4,7 @@ import model.Player;
 import model.Store;
 import model.products.Product;
 
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -13,15 +14,13 @@ for the behaviour of the store screen.
 public class RunStore {
 
     //references to things generated in app
-    private App app;
     private Scanner input;
     private Store store;
     private Player plr;
 
 
     //EFFECTS: Creates a new instance of this class
-    public RunStore(App app, Scanner input, Store store, Player plr) {
-        this.app = app;
+    public RunStore(Scanner input, Store store, Player plr) {
         this.input = input;
         this.store = store;
         this.plr = plr;
@@ -52,7 +51,7 @@ public class RunStore {
         switch (i.toLowerCase()) {
             case "options":
                 System.out.println("\nPossible Products:");
-                app.printProducts(store.getAvailableOptions());
+                printOptions(store.getAvailableOptions());
                 //product buying sequence
                 tryBuy();
                 break;
@@ -91,5 +90,18 @@ public class RunStore {
             System.out.println("It can be unlocked for $" + p.getUnlockCost() + ".");
             i++;
         }
+    }
+
+    //EFFECTS: prints the list of buying options and returns that string
+    public String printOptions(List<Product> list) {
+        int i = 1;
+        String out = "";
+        for (Product p : list) {
+            System.out.println(i + ": " + p);
+            out += i + ": " + p + "\n\n";
+            i++;
+        }
+        System.out.println();
+        return out;
     }
 }
