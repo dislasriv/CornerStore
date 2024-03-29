@@ -82,7 +82,7 @@ public class App {
         return mainControlInputProcess(i);
     }
 
-    //EFFECTS: Processes input in main control
+    //EFFECTS: Processes input for main screen
     public boolean mainControlInputProcess(String i) {
         switch (i.toLowerCase()) {
             case "inv":
