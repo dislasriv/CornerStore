@@ -89,7 +89,7 @@ public class App {
                 plr.getInventory().printInventory();
                 break;
             case "store":
-                RunStore storeProtocol = new RunStore( input, store, plr);
+                RunStore storeProtocol = new RunStore(input, store, plr);
                 storeProtocol.runStore();
                 break;
             case "start":
