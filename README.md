@@ -68,14 +68,13 @@ components. This implementation was made before I knew about the
 observer pattern, so to refactor this design, I would 
 make every screen class an object of type Observable, but also observer
 since each screen would be watching other screens to look
-for updates. As of now, only the generic components that 
-every screen shares are updated when the screen changes.
+for updates. 
 
 Third, some of my GUI code is cluttered and hard to read.
-Specifically, the checkIfBuying method in the OptionsScreen
+Specifically, the checkIfBuying() method in the OptionsScreen
 class has complicated, verbose and nested calls to the
-ImageIcon constructor when I try to update my visual component
-with a new image, all in one line. This is very hard to understand without comments.
+ImageIcon constructor, all in one line. They run  when I try to update my visual component
+with a new image. This is very hard to understand without comments.
 To fix this specific issue I would
 refactor this process into its own well documented method
 with each step that my current one line solution makes being separate
