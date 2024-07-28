@@ -2,12 +2,14 @@
 
 
 ## Description
-The application will function as a store management game. As a player, your objective is to
-buy stock, upgrade your store, and
-make rent every 5 days. Stock goes on clearance (loses value) after 2 days
+This is a small store management game, as a player, your objective is to
+buy stock, unlock new products and upgrade your store, and make rent every 5 days. Stock goes on clearance (loses value) after 2 days
 so buy responsibly!
-- This project is of interest to me since I ultimately want to be a 
-game developer.
+
+##How to run
+- dowload the .ZIP file.
+- Extract the folder wherever you like, then run the CornerStore.jar file in the main project directory.
+- Have fun!
 
 # *User stories*:
 - As a user, I want to be able to add stock items to my inventory.
